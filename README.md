@@ -3,10 +3,20 @@ sat-solver
 
 A naïve SAT solver written in Python for practice purpose. Specification can be found on the programming question of the 2013 Feb's entrance exam to Tokyo University's CS master program.
 
+By the time of writing, I was new to Python. So it's not very _Pythonic_, for example, it contains _Camel Case_ in method names. It is more about solving problems any way.
+
 Update History:
 
-2012/06/12
-----------
+###2013/12/15
+
+* README.md
+* solver.py
+* test.py
+
+Several textual editing on `README.md`. Renamed the two python file.
+
+###2013/06/12
+
 * extendedFormula.py
 
 When I was about to write a memo about this project, I did a little research on CNF in Wikipedia, and found some sample formula. Then I stopped to test my code with them, because I hadn't tested it thoroughly. To my disappointment, I found errors:
@@ -21,9 +31,8 @@ Some debug outputs suggests that double negations weren't converted correctly (t
 
 Reading the code, I found _Neg's CNF method relies on argument `positive' to detect double negation (when positive=False) without producing a _Neg instance that has another _Neg instance as its `negated' attribute. However, the argument is never set to False (because the De Morgan expansion produces _Neg with _Neg). So I changed a few lines, and made it correct.
 
+###2012/06/11
 
-2012/06/11
-----------
 + extendedFormula.py
 + extendedFormula_driver.py
 
@@ -53,8 +62,8 @@ Now I have solutions to all 6 questions. Break-throughs include:
 	d) a disjunction is in CNF if each element is either a var or negated var, but again this is ofthen not the case; my approach is to do double negation, recursively convert the inner negation into DNF then recursively convert the outter negation into CNF (because by De Morgan's law, the negation of a dijunction is a conjuction with each part negated).
 
 
-2012/06/10
-----------
+###2012/06/10
+
 + solver.py
 
 To deal with brackets, I wrote a parsing function. It uses one stack for tokens and another stack to store the position of each unclosed left bracket. Because the matching property of brackets implies an LIFO process: the most recently seen left bracket gets matched first.
@@ -65,9 +74,8 @@ To parse operators, just put each symbol into a stack, and create an AST node wi
 
 I was just too tired to come up with any idea though.
 
+###2012/06/10
 
-2012/06/10
-----------
 + booleanFormula.py
 
 I solved the previous 3 questions in "KISS" manner. But it is too simple such that I cannot extended it to solve the 4th problem -- I have to introduce a new algorithm (parsing).
